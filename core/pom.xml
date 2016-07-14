@@ -20,19 +20,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.bitcoinj</groupId>
-        <artifactId>bitcoinj-parent</artifactId>
+        <groupId>org.bitcoinj-extra</groupId>
+        <artifactId>bitcoinj-extra-parent</artifactId>
         <version>0.14.3</version>
     </parent>
 
-    <artifactId>bitcoinj-core</artifactId>
+    <artifactId>bitcoinj-extra-core</artifactId>
 
-    <name>bitcoinj</name>
+    <name>bitcoinj-extra</name>
     <description>A Java Bitcoin library</description>
 
     <packaging>jar</packaging>
 
-    <url>https://bitcoinj.github.io</url>
+    <url>https://github.com/MatthewLM/bitcoinj-extra</url>
 
     <licenses>
         <license>
@@ -279,7 +279,7 @@
                 <configuration>
                     <excludes>
                         <exclude>**/Protos*.class</exclude> <!-- Exclude generated protobuf classes -->
-                        <exclude>org/bitcoinj/jni/*</exclude> <!-- Exclude JNI classes -->
+                        <exclude>org/bitcoinj_extra/jni/*</exclude> <!-- Exclude JNI classes -->
                         <exclude>org/bitcoin/*</exclude> <!-- Exclude native classes -->
                     </excludes>
                 </configuration>
@@ -353,7 +353,7 @@
             <version>3.2</version>
             <scope>test</scope>
         </dependency>
-        <!-- bitcoinj consumers are expected to provide their own SLF4J adapters
+        <!-- bitcoinj_extra consumers are expected to provide their own SLF4J adapters
              such as logback, slf4j-log4j12, slf4j-jcl and so on
              see http://www.slf4j.org/faq.html -->
         <dependency>
@@ -427,7 +427,7 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>org.bitcoinj</groupId>
+            <groupId>org.bitcoinj-extra</groupId>
             <artifactId>orchid</artifactId>
             <version>1.2.1</version>
         </dependency>
@@ -435,6 +435,11 @@
             <groupId>com.squareup.okhttp</groupId>
             <artifactId>okhttp</artifactId>
             <version>2.7.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20080701</version>
         </dependency>
     </dependencies>
 
