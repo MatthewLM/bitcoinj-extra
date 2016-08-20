@@ -36,16 +36,16 @@ public class ShapeShift {
 	public static void addAllCoins() {
 		
 		/*                          NAME            URI PREFIX            CODE     DECIMALS    ADDRESS PREFIX    P2SH PREFIX    HAS IMG    TESTED */
-		addCoin(new ShapeShiftCoin( "BitCrystals",  "counterparty_bcy",   "BCY",   8,          0,                5));        // N          N
+		addCoin(new ShapeShiftCoin( "BitCrystals",  "counterparty_bcy",   "BCY",   8,          0,                5));        // N          Y
 		addCoin(new ShapeShiftCoin( "Blackcoin",    "blackcoin",          "BLK",   8,          25,               85));       // Y          Y
 		addCoin(new ShapeShiftCoin( "Clams",        "clam",               "CLAM",  8,          137,              13));       // N          Y
 		addCoin(new ShapeShiftCoin( "Counterparty", "counterparty_xcp",   "XCP",   8,          0,                5));        // Y          Y
 		addCoin(new ShapeShiftCoin( "Dash",         "dash",               "DASH",  8,          76,               16));       // Y          Y
 		addCoin(new ShapeShiftCoin( "Digibyte",     "digibyte",           "DGB",   8,          30,               5));        // Y          Y
 		addCoin(new ShapeShiftCoin( "Dogecoin",     "dogecoin",           "DOGE",  8,          30,               22));       // Y          Y
-		addCoin(new ShapeShiftCoin( "Emercoin",     "emercoin",           "EMC",   6,          33,               92));       // N          N
+		addCoin(new ShapeShiftCoin( "Emercoin",     "emercoin",           "EMC",   6,          33,               92));       // N          Y
 		addCoin(new ShapeShiftCoin( "Litecoin",     "litecoin",           "LTC",   8,          48,               5));        // Y          Y
-		addCoin(new ShapeShiftCoin( "MaidSafeCoin", "counterparty_maid",  "MAID",  8,          0,                5));        // N          N
+		addCoin(new ShapeShiftCoin( "MaidSafeCoin", "counterparty_maid",  "MAID",  8,          0,                5));        // N          Y
 		addCoin(new ShapeShiftCoin( "Mastercoin",   "mastercoin",         "MSC",   8,          0,                5));        // N          Y
 		addCoin(new ShapeShiftCoin( "Mintcoin",     "mintcoin",           "MINT",  6,          51,               8));        // Y          Y
 		addCoin(new ShapeShiftCoin( "Monacoin",     "monacoin",           "MONA",  8,          50,               5));        // Y          Y
@@ -57,9 +57,9 @@ public class ShapeShift {
 		addCoin(new ShapeShiftCoin( "Shadowcash",   "shadowcoin",         "SDC",   8,          63,               125));      // N          Y
 		addCoin(new ShapeShiftCoin( "Startcoin",    "startcoin",          "START", 8,          125,              5));        // N          Y
 		addCoin(new ShapeShiftCoin( "Storjcoin X",  "counterparty_sjcx",  "SJCX",  8,          0,                5));        // N          Y
-		addCoin(new ShapeShiftCoin( "Tether",       "tether",             "USDT",  8,          0,                5));        // N          Y
+		//addCoin(new ShapeShiftCoin( "Tether",       "tether",             "USDT",  8,          0,                5));        // N          N
 		addCoin(new ShapeShiftCoin( "Vericoin",     "vericoin",           "VRC",   8,          70,               85));       // Y          Y
-		addCoin(new ShapeShiftCoin( "Vertcoin",     "vertcoin",           "VTC",   8,          71,               5));        // N          N
+		addCoin(new ShapeShiftCoin( "Vertcoin",     "vertcoin",           "VTC",   8,          71,               5));        // N          Y
 
 	}
 	

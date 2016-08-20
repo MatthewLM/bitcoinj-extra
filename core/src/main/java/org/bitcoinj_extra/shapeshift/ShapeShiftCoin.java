@@ -33,6 +33,7 @@ public class ShapeShiftCoin extends CoinDetails {
     private static MonetaryFormat FORMAT8 = new MonetaryFormat().shift(0).minDecimals(2).repeatOptionalDecimals(1, 6).noCode();
     private static MonetaryFormat FORMAT6 = new MonetaryFormat().shift(0).minDecimals(2).repeatOptionalDecimals(1, 4).noCode();
     private static MonetaryFormat FORMAT5 = new MonetaryFormat().shift(0).minDecimals(2).repeatOptionalDecimals(1, 3).noCode();
+    private static MonetaryFormat FORMAT4 = new MonetaryFormat().shift(0).minDecimals(2).repeatOptionalDecimals(1, 2).noCode();
 
     private final String name;
     private final String coinCode;
@@ -107,8 +108,11 @@ public class ShapeShiftCoin extends CoinDetails {
         
 	    if (exponent == 6) 
 		    return FORMAT6;
-        
-	    return FORMAT5;
+
+        if (exponent == 5)
+            return FORMAT5;
+
+        return FORMAT4;
         
     }
 	

@@ -34,7 +34,8 @@ public class ShapeShiftComm extends ShapeShiftInterface {
 	private static final AsyncHttpClient client = new AsyncHttpClient();
 	private static final String API_URL = "https://shapeshift.io/";
 	private static final String CONTENT_TYPE = "application/json";
-	
+	private static final String API_PUB_KEY = "a7a4696501152616c0a4c8d9afeb958111abbaf15f40fec4c9512375f1df529227ec0ecc1fdb913eb0c878a1ccf08a08e559a61f93ebeb7d050428d21ccfe2f5";
+
 	private abstract class ResponseCallback implements AsyncHttpClient.HttpResponseCallbacks {
 		
 		@Override
@@ -60,10 +61,11 @@ public class ShapeShiftComm extends ShapeShiftInterface {
 		JSONObject jsonRequest = new JSONObject();
 		
 		try {
-			jsonRequest.put("pair", "nbt_" + destCoin.getCoinCode());
+			jsonRequest.put("pair", "btc_" + destCoin.getCoinCode());
 			jsonRequest.put("amount", amount.toPlainString());
 			jsonRequest.put("withdrawal", destAddr.toString());
 			jsonRequest.put("returnAddress", refund.toString());
+            jsonRequest.put("apiKey", API_PUB_KEY);
 		} catch (JSONException ex) {
 			throw new IllegalArgumentException();
 		}
@@ -131,9 +133,10 @@ public class ShapeShiftComm extends ShapeShiftInterface {
 		JSONObject jsonRequest = new JSONObject();
 		
 		try {
-			jsonRequest.put("pair", "nbt_" + destCoin.getCoinCode());
+			jsonRequest.put("pair", "btc_" + destCoin.getCoinCode());
 			jsonRequest.put("withdrawal", destAddr.toString());
 			jsonRequest.put("returnAddress", refund.toString());
+            jsonRequest.put("apiKey", API_PUB_KEY);
 		} catch (JSONException ex) {
 			throw new IllegalArgumentException();
 		}
@@ -166,7 +169,7 @@ public class ShapeShiftComm extends ShapeShiftInterface {
 
 	@Override
 	public void limit(ShapeShiftCoin destCoin) {
-		client.get(API_URL + "limit/nbt_" + destCoin.getCoinCode(), new ResponseCallback() {
+		client.get(API_URL + "limit/btc_" + destCoin.getCoinCode(), new ResponseCallback() {
 
 			@Override
 			public void onSuccess(String response) {
@@ -195,7 +198,7 @@ public class ShapeShiftComm extends ShapeShiftInterface {
 
 	@Override
 	public void rate(ShapeShiftCoin destCoin) {
-		client.get(API_URL + "rate/" + destCoin.getCoinCode() + "_nbt", new ResponseCallback() {
+		client.get(API_URL + "rate/" + destCoin.getCoinCode() + "_btc", new ResponseCallback() {
 
 			@Override
 			public void onSuccess(String response) {
@@ -221,7 +224,7 @@ public class ShapeShiftComm extends ShapeShiftInterface {
 	
 	@Override
 	public void marketInfo(final ShapeShiftCoin destCoin) {
-		client.get(API_URL + "marketinfo/nbt_" + destCoin.getCoinCode(), new ResponseCallback() {
+		client.get(API_URL + "marketinfo/btc_" + destCoin.getCoinCode(), new ResponseCallback() {
 
 			@Override
 			public void onSuccess(String response) {

@@ -52,11 +52,23 @@ public class ShapeShiftMonetary implements Monetary {
 	}
 	
 	public ShapeShiftMonetary(Coin coin, Coin rate, int smallestUnitExponent) {
-		this(coin.value * pow(10, smallestUnitExponent) / rate.value, smallestUnitExponent);
+		this(
+				BigInteger.valueOf(coin.getValue())
+						.multiply(BigInteger.valueOf(pow(10, smallestUnitExponent)))
+						.divide(BigInteger.valueOf(rate.getValue()))
+						.longValue(),
+				smallestUnitExponent
+		);
 	}
 	
-	public ShapeShiftMonetary(Coin coin, ShapeShiftMonetary rate, int smallestUnitExponent) {
-		this(coin.value * rate.value / pow(10, coin.smallestUnitExponent()), smallestUnitExponent);
+	public ShapeShiftMonetary(Coin coin, ShapeShiftMonetary rate) {
+		this(
+				BigInteger.valueOf(coin.getValue())
+						.multiply(BigInteger.valueOf(rate.getValue()))
+						.divide(BigInteger.valueOf(pow(10, coin.smallestUnitExponent())))
+						.longValue(),
+				rate.smallestUnitExponent
+		);
 	}
 	
 	private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {

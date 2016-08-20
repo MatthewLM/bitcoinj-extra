@@ -164,7 +164,7 @@ public class AddressTest {
 
         List<CoinDetails> details = Address.getCoinsFromAddress("17kzeh4N8g49GFvdDzSf8PjaPfyoD1MndL");
 
-        assertEquals(7, details.size());
+        assertEquals(6, details.size());
 
         assertEquals("bitcoin", details.get(0).getUriScheme());
         assertEquals("counterparty_bcy", details.get(1).getUriScheme());
@@ -172,13 +172,12 @@ public class AddressTest {
         assertEquals("counterparty_maid", details.get(3).getUriScheme());
         assertEquals("mastercoin", details.get(4).getUriScheme());
         assertEquals("counterparty_sjcx", details.get(5).getUriScheme());
-        assertEquals("tether", details.get(6).getUriScheme());
 
         // Bitcoin P2SH address, all coins
 
         details = Address.getCoinsFromAddress("35b9vsyH1KoFT5a5KtrKusaCcPLkiSo1tU");
 
-        assertEquals(13, details.size());
+        assertEquals(12, details.size());
 
         assertEquals("bitcoin", details.get(0).getUriScheme());
         assertEquals("counterparty_bcy", details.get(1).getUriScheme());
@@ -191,8 +190,7 @@ public class AddressTest {
         assertEquals("reddcoin", details.get(8).getUriScheme());
         assertEquals("startcoin", details.get(9).getUriScheme());
         assertEquals("counterparty_sjcx", details.get(10).getUriScheme());
-        assertEquals("tether", details.get(11).getUriScheme());
-        assertEquals("vertcoin", details.get(12).getUriScheme());
+        assertEquals("vertcoin", details.get(11).getUriScheme());
 
         // Peercoin example
 

@@ -55,47 +55,47 @@ public abstract class ShapeShiftInterface {
     /**
      * Initiate a method call to "sendamount". This allows one to send a fixed amount of destination coins for a particular rate.
      *
-     * @params destCoin The coin to send coins to on the other side.
-     * @params destAddr The address coins should be sent to.
-     * @params amount The amount of coins to be received by the destination address.
-     * @params refund An address to receive refunds in case a transaction goes wrong.
+     * @param destCoin The coin to send coins to on the other side.
+     * @param destAddr The address coins should be sent to.
+     * @param amount The amount of coins to be received by the destination address.
+     * @param refund An address to receive refunds in case a transaction goes wrong.
      */
 	public abstract void sendAmount(ShapeShiftCoin destCoin, Address destAddr, ShapeShiftMonetary amount, Address refund);
 
     /**
      * Initiate a method call to "cancelpending". The allows one to cancel a fixed amount transaction created by sendAmount.
      *
-     * @params depositAddr The deposit address of the fixed amount transaction to cancel.
+     * @param depositAddr The deposit address of the fixed amount transaction to cancel.
      */
 	public abstract void cancelPending(Address depositAddr);
 
     /**
      * Initiate a method call to "shift". This allows arbitrary amounts to be send to an address, with no guarenteed rate.
      *
-     * @params destCoin The coin to send coins to on the other side.
-     * @params destAddr The address coins should be sent to.
-     * @params refund An address to receive refunds in case a transaction goes wrong.
+     * @param destCoin The coin to send coins to on the other side.
+     * @param destAddr The address coins should be sent to.
+     * @param refund An address to receive refunds in case a transaction goes wrong.
      */
 	public abstract void shift(ShapeShiftCoin destCoin, Address destAddr, Address refund);
 
     /**
      * Initiate a method call to "limit".
      *
-     * @params destCoin The coin to obtain information
+     * @param destCoin The coin to obtain information
      */
 	public abstract void limit(ShapeShiftCoin destCoin);
 
     /**
      * Initiate a method call to "rate".
      *
-     * @params destCoin The coin to obtain information
+     * @param destCoin The coin to obtain information
      */
 	public abstract void rate(ShapeShiftCoin destCoin);
 
     /**
      * Initiate a method call to "marketinfo".
      *
-     * @params destCoin The coin to obtain information
+     * @param destCoin The coin to obtain information
      */
 	public abstract void marketInfo(ShapeShiftCoin destCoin);
 	
@@ -104,10 +104,10 @@ public abstract class ShapeShiftInterface {
         /**
          * Response for sendAmount requests.
          *
-         * @params deposit The address to deposit coins to.
-         * @params amount The amount of coins that need to be deposited.
-         * @params expiry The unix timestamp at which the transaction expires.
-         * @params rate The rate which will be fulfilled.
+         * @param deposit The address to deposit coins to.
+         * @param amount The amount of coins that need to be deposited.
+         * @param expiry The unix timestamp at which the transaction expires.
+         * @param rate The rate which will be fulfilled.
          */
 		public void sendAmountResponse(Address deposit, Coin amount, long expiry, Coin rate) {
 			throw new UnsupportedOperationException("sendAmountResponse not implemented");
@@ -123,7 +123,7 @@ public abstract class ShapeShiftInterface {
         /**
          * Response for shift requests.
          *
-         * @params deposit The address to deposit coins to.
+         * @param deposit The address to deposit coins to.
          */
 		public void shiftResponse(Address deposit) {
 			throw new UnsupportedOperationException("shiftResponse not implemented");
@@ -132,8 +132,8 @@ public abstract class ShapeShiftInterface {
         /**
          * Response for limit requests.
          *
-         * @params max The maximum allowed deposit for the destination coin.
-         * @params min The minimum allowed deposit for the destination coin.
+         * @param max The maximum allowed deposit for the destination coin.
+         * @param min The minimum allowed deposit for the destination coin.
          */
 		public void limitResponse(Coin max, Coin min) {
 			throw new UnsupportedOperationException("limitResponse not implemented");
@@ -142,7 +142,7 @@ public abstract class ShapeShiftInterface {
         /**
          * Response for rate requests.
          *
-         * @params rate The estimated rate for transactions to the destination coin.
+         * @param rate The estimated rate for transactions to the destination coin.
          */
 		public void rateResponse(Coin rate) {
 			throw new UnsupportedOperationException("rateResponse not implemented");
@@ -151,10 +151,10 @@ public abstract class ShapeShiftInterface {
         /**
          * Response for marketinfo requests.
          *
-         * @params rate The estimated rate for transactions to the destination coin.
-         * @params fee The fee that will be taken from the transaction to the destination coin
-         * @params max The maximum allowed deposit for the destination coin.
-         * @params min The minimum allowed deposit for the destination coin.
+         * @param rate The estimated rate for transactions to the destination coin.
+         * @param fee The fee that will be taken from the transaction to the destination coin
+         * @param max The maximum allowed deposit for the destination coin.
+         * @param min The minimum allowed deposit for the destination coin.
          */
 		public void marketInfoResponse(ShapeShiftMonetary rate, ShapeShiftMonetary fee, Coin max, Coin min) {
 			throw new UnsupportedOperationException("rateResponse not implemented");
@@ -163,8 +163,8 @@ public abstract class ShapeShiftInterface {
         /**
          * On an error with a call to the API.
          *
-         * @params networkCode The HTTP code of the error
-         * @params text The text of the error
+         * @param networkCode The HTTP code of the error
+         * @param text The text of the error
          */
         public abstract void networkError(int networkCode, String text);
 		

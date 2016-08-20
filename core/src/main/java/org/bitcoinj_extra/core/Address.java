@@ -83,9 +83,9 @@ public class Address extends VersionedChecksummedBytes {
     /**
      * Returns an Address that represents the given P2SH script hash.
      */
-    public static Address fromP2SHHash(NetworkParameters params, byte[] hash160) {
+    public static Address fromP2SHHash(CoinDetails details, byte[] hash160) {
         try {
-            return new Address(params, params.getP2SHHeader(), hash160);
+            return new Address(details, details.getP2SHHeader(), hash160);
         } catch (WrongNetworkException e) {
             throw new RuntimeException(e);  // Cannot happen.
         }
@@ -94,9 +94,9 @@ public class Address extends VersionedChecksummedBytes {
     /**
      * Returns an Address that represents the script hash extracted from the given scriptPubKey
      */
-    public static Address fromP2SHScript(NetworkParameters params, Script scriptPubKey) {
+    public static Address fromP2SHScript(CoinDetails details, Script scriptPubKey) {
         checkArgument(scriptPubKey.isPayToScriptHash(), "Not a P2SH script");
-        return fromP2SHHash(params, scriptPubKey.getPubKeyHash());
+        return fromP2SHHash(details, scriptPubKey.getPubKeyHash());
     }
 
     /**
@@ -107,8 +107,8 @@ public class Address extends VersionedChecksummedBytes {
      * @throws AddressFormatException if the given base58 doesn't parse or the checksum is invalid
      * @throws WrongNetworkException  if the given address is valid but for a different chain (eg testnet vs mainnet)
      */
-    public static Address fromBase58(@Nullable CoinDetails params, String base58) throws AddressFormatException {
-        return new Address(params, base58);
+    public static Address fromBase58(@Nullable CoinDetails details, String base58) throws AddressFormatException {
+        return new Address(details, base58);
     }
 
     /**
@@ -133,7 +133,7 @@ public class Address extends VersionedChecksummedBytes {
 
 
     /**
-     * @deprecated Use {@link #fromBase58(NetworkParameters, String)}
+     * @deprecated Use {@link #fromBase58(CoinDetails, String)}
      */
     @Deprecated
     public Address(@Nullable List<CoinDetails> coinList, String address) throws AddressFormatException {

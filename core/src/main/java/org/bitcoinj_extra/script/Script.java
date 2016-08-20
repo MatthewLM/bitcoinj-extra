@@ -339,14 +339,14 @@ public class Script {
      * transaction can actually receive coins on it. This method may be removed in future.
      */
     @Deprecated
-    public Address getFromAddress(NetworkParameters params) throws ScriptException {
+    public Address getFromAddress(CoinDetails params) throws ScriptException {
         return new Address(params, Utils.sha256hash160(getPubKey()));
     }
 
     /**
      * Gets the destination address from this script, if it's in the required form (see getPubKey).
      */
-    public Address getToAddress(NetworkParameters params) throws ScriptException {
+    public Address getToAddress(CoinDetails params) throws ScriptException {
         return getToAddress(params, false);
     }
 
@@ -357,13 +357,13 @@ public class Script {
      *            If true, allow payToPubKey to be casted to the corresponding address. This is useful if you prefer
      *            showing addresses rather than pubkeys.
      */
-    public Address getToAddress(NetworkParameters params, boolean forcePayToPubKey) throws ScriptException {
+    public Address getToAddress(CoinDetails details, boolean forcePayToPubKey) throws ScriptException {
         if (isSentToAddress())
-            return new Address(params, getPubKeyHash());
+            return new Address(details, getPubKeyHash());
         else if (isPayToScriptHash())
-            return Address.fromP2SHScript(params, this);
+            return Address.fromP2SHScript(details, this);
         else if (forcePayToPubKey && isSentToRawPubKey())
-            return ECKey.fromPublicOnly(getPubKey()).toAddress(params);
+            return ECKey.fromPublicOnly(getPubKey()).toAddress(details);
         else
             throw new ScriptException("Cannot cast this script to a pay-to-address type");
     }
